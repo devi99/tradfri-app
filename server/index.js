@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 const sock = sockjs.createServer({ sockjs_url: 'http://cdn.jsdelivr.net/sockjs/1.0.1/sockjs.min.js' });
 init(app, sock);
 
-const port = process.env.PORT || config.port || 3000;
+const port = process.env.PORT || config.port || 8081;
 const server = app.listen(port);
 sock.installHandlers(server, { prefix: '/updates' });
 
@@ -17,7 +17,7 @@ console.log(`Trådfri service running on port ${port}`);
 
 async function auth() {
   try {
-    const { identity, psk } = await tradfri.authenticate('c1GIax27MMYPowO1');
+    const { identity, psk } = await tradfri.authenticate('fYYsS7l3fpiMOc4D');
     // store identity and psk
     console.log(identity, psk);
     tradfri.destroy();
